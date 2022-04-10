@@ -6,14 +6,20 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        is_logged_in();
+        // is_logged_in();
+    }
+
+    public function home()
+    {
+        $data['title'] = 'Sistem Pendukung Keputusan';
+        $this->load->view('user/home', $data);
     }
 
     public function index()
     {
+        is_logged_in();
         $data['title'] = 'My Profile';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -21,14 +27,12 @@ class User extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-
     public function edit()
     {
+        is_logged_in();
         $data['title'] = 'Edit Profile';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
         $this->form_validation->set_rules('name', 'Full Name', 'required|trim');
-
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -60,7 +64,6 @@ class User extends CI_Controller
                     echo $this->upload->dispay_errors();
                 }
             }
-
             $this->db->set('name', $name);
             $this->db->where('email', $email);
             $this->db->update('user');
@@ -73,6 +76,7 @@ class User extends CI_Controller
 
     public function changePassword()
     {
+        is_logged_in();
         $data['title'] = 'Change Password';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 

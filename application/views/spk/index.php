@@ -8,13 +8,13 @@
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card border-left-primary bg-warning text-white shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Bobot</div>
+              <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Bobot</div>
               <?php foreach ($countbobot as $row) ?>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $row->bobot; ?></div>
+              <div class="h5 mb-0 font-weight-bold text-white-800"><?= $row->bobot; ?></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -26,13 +26,13 @@
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-success shadow h-100 py-2">
+      <div class="card border-left-success bg-primary shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Kriteria</div>
+              <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Kriteria</div>
               <?php foreach ($countkriteria as $row) ?>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $row->kriteria; ?></div>
+              <div class="h5 mb-0 font-weight-bold text-white"><?= $row->kriteria; ?></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -44,15 +44,15 @@
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-info shadow h-100 py-2">
+      <div class="card bg-danger border-left-info shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Bobot Kriteria</div>
+              <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Bobot Kriteria</div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
                   <?php foreach ($counttotal as $row) ?>
-                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $row->total; ?></div>
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-white"><?= $row->total; ?></div>
                 </div>
                 <div class="col">
                   <div class="progress progress-sm mr-2">
@@ -71,13 +71,13 @@
 
     <!-- Pending Requests Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card bg-success border-left-warning shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Jumlah Alternatif</div>
+              <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Alternatif</div>
               <?php foreach ($countalt as $row) ?>
-              <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $row->alternatif; ?></div>
+              <div class="h5 mb-0 font-weight-bold text-white"><?= $row->alternatif; ?></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -93,14 +93,14 @@
   <div class="row">
     <!-- Area Chart -->
     <div class="col-xl-6 col-lg-6">
-      <div class="card shadow mb-4">
+      <div class="card text-white bg-primary shadow mb-4">
         <!-- Card Header - Dropdown -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">Bobot</h6>
         </div>
         <!-- Card Body -->
         <div class="card-body">
-          <table class="table table-hover" id="dataTable1">
+          <table class="table table-hover text-white" id="dataTable1">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -126,14 +126,14 @@
 
     <!-- Pie Chart -->
     <div class="col-xl-6 col-lg-6">
-      <div class="card shadow mb-4">
+      <div class="card text-white bg-warning shadow mb-4">
         <!-- Card Header - Dropdown -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
           <h6 class="m-0 font-weight-bold text-primary">Kriteria</h6>
         </div>
         <!-- Card Body -->
         <div class="card-body">
-          <table class="table table-hover" id="dataTable">
+          <table class="table text-white table-hover" id="dataTable">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -161,14 +161,14 @@
   <!-- Content Row -->
   <div class="row">
     <!-- Content Column -->
-    <div class="col-lg-6 mb-4">
+    <div class="col-lg-7 mb-4">
       <!-- Project Card Example -->
-      <div class="card shadow mb-4">
+      <div class="card text-white bg-success shadow mb-4">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Bobot Kriteria</h6>
         </div>
         <div class="card-body">
-          <table class="table table-hover" id="dataTable2">
+          <table class="table text-white table-hover" id="dataTable2">
             <thead>
               <tr>
                 <?php foreach ($counttotal as $row) ?>
@@ -200,14 +200,14 @@
       </div>
     </div>
 
-    <div class="col-lg-6 mb-4">
+    <div class="col-lg-5 mb-4">
       <!-- Illustrations -->
-      <div class="card shadow mb-4">
+      <div class="card text-white bg-info shadow mb-4">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Penilaian Sub Kriteria</h6>
         </div>
         <div class="card-body">
-          <table class="table table-hover" id="dataTable3">
+          <table class="table text-white table-hover" id="dataTable3">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -236,12 +236,12 @@
     <!-- Content Column -->
     <div class="col-lg-5 mb-4">
       <!-- Project Card Example -->
-      <div class="card shadow mb-4">
+      <div class="card text-white bg-danger shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">ALternatif</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Alternatif</h6>
         </div>
         <div class="card-body">
-          <table class="table table-hover" id="dataTable4">
+          <table class="table text-white table-hover" id="dataTable4">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -267,12 +267,12 @@
 
     <div class="col-lg-7 mb-4">
       <!-- Illustrations -->
-      <div class="card shadow mb-4">
+      <div class="card text-white bg-secondary shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Penilaian Sub Kriteria</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Nilai Alternatif Kriteria</h6>
         </div>
         <div class="card-body">
-          <table class="table table-hover" id="dataTable5">
+          <table class="table text-white table-hover" id="dataTable5">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -309,7 +309,7 @@
     <!-- Content Column -->
     <div class="col-lg-4 mb-4">
       <!-- Project Card Example -->
-      <div class="card shadow mb-4">
+      <div class="card text-white bg-primary shadow mb-4">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Vektor S</h6>
           <?php foreach ($bi1 as $row) ?>
@@ -333,7 +333,7 @@
 
         </div>
         <div class="card-body">
-          <table class="table table-hover" id="">
+          <table class="table text-white table-hover" id="">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -365,12 +365,12 @@
 
     <div class="col-lg-4 mb-4">
       <!-- Illustrations -->
-      <div class="card shadow mb-4">
+      <div class="card text-white bg-warning shadow mb-4">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Vektor V</h6>
         </div>
         <div class="card-body">
-          <table class="table table-hover" id="">
+          <table class="table text-white table-hover" id="">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -394,6 +394,8 @@
                   <!-- <td><?= $vektorS; ?></td> -->
                   <?php $vektorV = $vektorS / $totalvs ?>
                   <td><?= $vektorV; ?></td>
+                  <?php $arrayvektorV[] = $vektorV ?>
+                  <!-- <td><?= $arrayvektorV; ?></td> -->
                   <?php $arraytotalVektorV[] = $vektorV ?>
                   <?php $totalVektorV = array_sum($arraytotalVektorV) ?>
                 </tr>
