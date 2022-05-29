@@ -5,6 +5,8 @@
   <div class="row">
     <div class="col-lg-8">
       <form action="" method="post">
+        <?php $j = $c + 1; ?>
+        <input type="hidden" name="urutan_id" value="<?= $j; ?>">
         <div class="form-group row">
           <label for="" class="col-sm-2 col-form-label">Kriteria</label>
           <div class="col-sm-6">

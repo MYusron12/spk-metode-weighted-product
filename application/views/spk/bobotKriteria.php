@@ -5,7 +5,7 @@
   <?php foreach ($counttotal as $row) ?>
   <div class="row">
     <div class="col-lg-8">
-      <?= $this->session->flashdata('message'); ?>
+      <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
       <a href="<?= base_url('spk/tambahBobotKriteria'); ?>" class="btn btn-primary mb-3">Tambah Bobot Kriteria</a>
       <table class="table table-hover" id="dataTable">
         <thead>
@@ -30,9 +30,13 @@
               <td><?= $bk['keterangan_bobot']; ?></td>
               <?php $hasil = $bk['kode_bobot'] / $row->total ?>
               <td><?= $hasil; ?></td>
+              <?php
+              $array[] = $hasil;
+              $total = array_sum($array);
+              ?>
               <td>
                 <a href="<?= base_url('spk/editBobotKriteria/') . $bk['id']; ?>" class="badge badge-success">edit</a>
-                <a href="<?= base_url('spk/hapusBobotKriteria/') . $bk['id']; ?>" class="badge badge-danger" onclick="return confirm('Apakah akan dihapus?')">delete</a>
+                <a href="<?= base_url('spk/hapusBobotKriteria/') . $bk['id']; ?>" class="badge badge-danger tombol-hapus">delete</a>
               </td>
             </tr>
             <?php $i++; ?>
@@ -56,7 +60,13 @@
         <div class="card-header">Total Hasil Normalisasi
         </div>
         <div class="card-body">
-          1
+          <?php
+          if (!empty($total)) {
+            echo $total;
+          } else {
+            echo $total = 0;
+          }
+          ?>
         </div>
       </div>
 
@@ -66,7 +76,7 @@
           <h6 class="m-0 font-weight-bold text-primary">Formula Normalisasi</h6>
         </div>
         <div class="card-body">
-          Jumlah Bobot Setiap Kriteria di bagi jumlah Bobot.
+          Jumlah Bobot Setiap Kriteria di bagi total jumlah Bobot.
         </div>
       </div>
 

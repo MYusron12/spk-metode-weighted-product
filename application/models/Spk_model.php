@@ -1,4 +1,7 @@
 <?php
+
+use phpDocumentor\Reflection\Types\This;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Spk_model extends CI_Model
@@ -11,7 +14,8 @@ class Spk_model extends CI_Model
   {
     $data = [
       'kode_alternatif' => $this->input->post('kode_alternatif'),
-      'keterangan_alternatif' => $this->input->post('keterangan_alternatif')
+      'keterangan_alternatif' => $this->input->post('keterangan_alternatif'),
+      'user_id' => $this->input->post('user_id')
     ];
     $this->db->where('id', $this->input->post('id'));
     $this->db->update('alternatif', $data);
@@ -56,7 +60,7 @@ class Spk_model extends CI_Model
               from bobot_kriteria a
               join kriteria b on b.id=a.kriteria_id
               join bobot c on c.id=a.bobot_id
-              order by a.id";
+              order by b.kode_kriteria";
     return $this->db->query($query)->result_array();
   }
 
@@ -94,9 +98,10 @@ class Spk_model extends CI_Model
   {
     return $this->db->query("select 
                             a.id, a.c1, a.c2, a.c3, a.c4,
-                            b.kode_alternatif, b.keterangan_alternatif
+                            b.kode_alternatif, b.keterangan_alternatif, c.name
                             from input_nilai a
                             join alternatif b on b.id=a.alternatif_id
+                            join user c on c.id=b.user_id order by b.kode_alternatif
                             ")->result_array();
   }
   public function getInputNilai($id)
@@ -118,7 +123,17 @@ class Spk_model extends CI_Model
 
   public function countTotalBobotKriteria()
   {
-    return $this->db->query("select sum(bobot_id) as total from bobot_kriteria")->result();
+    return $this->db->query("select
+    sum(kode_bobot) as total
+     from bobot_kriteria a
+     join kriteria b on b.id=a.kriteria_id
+     join bobot c on c.id=a.bobot_id
+     order by a.id")->result();
+  }
+
+  public function countBobotKriteria()
+  {
+    return $this->db->query("SELECT count(urutan_id) as urutan, count(*) as count FROM `bobot_kriteria`")->result();
   }
 
   public function countKriteria()
@@ -135,10 +150,61 @@ class Spk_model extends CI_Model
   }
   public function getId($id)
   {
-    return $this->db->query("SELECT bobot_id FROM `bobot_kriteria` WHERE id = $id")->result();
+    // return $this->db->query("SELECT bobot_id FROM `bobot_kriteria` WHERE urutan_id = $id")->result();
+    return $this->db->query("select b.kode_bobot as kode_bobot from bobot_kriteria a join bobot b on a.bobot_id=b.id where urutan_id = $id")->result();
   }
   public function getTotal()
   {
-    return $this->db->query("select sum(bobot_id) as total from bobot_kriteria")->result();
+    // return $this->db->query("select sum(bobot_id) as total from bobot_kriteria")->result();
+    return $this->db->query("select sum(kode_bobot) as total from bobot_kriteria a join bobot b on a.bobot_id=b.id")->result();
+  }
+  public function countAltInput()
+  {
+    return $this->db->query("select count(is_input) as countalt from user where role_id = 2")->result();
+  }
+  public function alternatifUser()
+  {
+    return $this->db->query("select alternatif.kode_alternatif, alternatif.keterangan_alternatif, user.name, alternatif.id, alternatif.user_id from alternatif join user on user.id=alternatif.user_id order by alternatif.kode_alternatif")->result_array();
+  }
+  public function userAll()
+  {
+    return $this->db->query("select * from user where role_id = 2")->result_array();
+  }
+  public function getUserSupplier($id)
+  {
+    return $this->db->query("select * from user where id = $id")->row_array();
+  }
+  public function isAlternatif()
+  {
+    return $this->db->query("select count(id) as alt from user where is_alternatif = 0 and role_id = 2")->result();
+  }
+  public function countUpload()
+  {
+    return $this->db->query("select count(id) as upload from user where is_upload = 0 and role_id = 2")->result();
+  }
+  public function uploadBelumAlt()
+  {
+    return $this->db->query("select count(id) as uploadbelumalt from user where is_upload = 1 and is_alternatif = 0 and role_id = 2")->result();
+  }
+  public function getUser($id)
+  {
+    return $this->db->query("select * from user where id = $id")->row_array();
+  }
+  public function editSupplier()
+  {
+    $data = [
+      'name' => $this->input->post('name'),
+      'email' => $this->input->post('email'),
+      'image' => $this->input->post('image'),
+      'password' => $this->input->post('password'),
+      'role_id' => $this->input->post('role_id'),
+      'is_active' => $this->input->post('is_active'),
+      'date_created' => $this->input->post('date_created'),
+      'is_upload' => $this->input->post('is_upload'),
+      'is_input' => $this->input->post('is_input'),
+      'is_alternatif' => $this->input->post('is_alternatif')
+    ];
+    $this->db->where('id', $this->input->post('id'));
+    $this->db->update('user', $data);
   }
 }

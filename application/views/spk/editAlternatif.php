@@ -20,6 +20,22 @@
             <?= form_error('keterangan_alternatif', '<small class="text-danger pl-3">', '</small>'); ?>
           </div>
         </div>
+        <div class="form-group row">
+          <label for="name" class="col-sm-2 col-form-label">Supplier Baru</label>
+          <div class="col-sm-6">
+            <select class="form-control" name="user_id" id="user_id">
+              <option value="">pilih supplier</option>
+              <?php foreach ($userall as $r) : ?>
+                <?php if ($r['id'] == $alternatifid['user_id']) : ?>
+                  <option value="<?= $r['id']; ?>" selected><?= $r['name']; ?></option>
+                <?php else : ?>
+                  <option value="<?= $r['id']; ?>"><?= $r['name']; ?></option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+            <?= form_error('keterangan_alternatif', '<small class="text-danger pl-3">', '</small>'); ?>
+          </div>
+        </div>
         <div class="form-group row justify-content-end">
           <div class="col-sm-10">
             <button type="submit" class="btn btn-primary">Simpan</button>

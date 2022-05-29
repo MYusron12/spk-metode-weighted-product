@@ -25,6 +25,42 @@ class Spk extends CI_Controller
     $data['penilaian'] = $this->db->get('penilaian_sub_kriteria')->result_array();
     $data['alternatif'] = $this->db->get('alternatif')->result_array();
     $data['inputnilai'] = $this->db->get('input_nilai')->result_array();
+    $data['alternatifuser'] = $this->spk->alternatifUser();
+    $data['inputjoinalt'] = $this->spk->getInputNilaiAlt();
+    $data['countkriteria'] = $this->spk->countKriteria();
+    $data['countbobot'] = $this->spk->countBobot();
+    $data['countalt'] = $this->spk->countAlt();
+
+    // ambil urutan bobot kriteria
+    $data['bi1'] = $this->spk->getId(1);
+    $data['bi2'] = $this->spk->getId(2);
+    $data['bi3'] = $this->spk->getId(3);
+    $data['bi4'] = $this->spk->getId(4);
+
+    $data['countaltinput'] = $this->spk->countAltInput();
+    $data['isalt'] = $this->spk->isAlternatif();
+    $data['total'] = $this->spk->getTotal();
+    $data['countupload'] = $this->spk->countUpload();
+    $data['uploadbelumalt'] = $this->spk->uploadBelumAlt();
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('templates/topbar', $data);
+    $this->load->view('spk/index', $data);
+    $this->load->view('templates/footer', $data);
+  }
+
+  public function vektorV()
+  {
+    $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $data['title'] = 'Report Hasil Penghitungan Vektor V <br> Sistem Pendukung Keputusan metode <i>weighted product</i> PT. Matahari Nusantara Logistik';
+    $data['bobot'] = $this->db->get('bobot')->result_array();
+    $data['kriteria'] = $this->db->get('kriteria')->result_array();
+    $data['bobotkriteria'] = $this->spk->getBobotKriteria();
+    $data['counttotal'] = $this->spk->countTotalBobotKriteria();
+    $data['penilaian'] = $this->db->get('penilaian_sub_kriteria')->result_array();
+    $data['alternatif'] = $this->db->get('alternatif')->result_array();
+    $data['inputnilai'] = $this->db->get('input_nilai')->result_array();
+    $data['alternatifuser'] = $this->spk->alternatifUser();
     $data['inputjoinalt'] = $this->spk->getInputNilaiAlt();
     $data['countkriteria'] = $this->spk->countKriteria();
     $data['countbobot'] = $this->spk->countBobot();
@@ -33,11 +69,15 @@ class Spk extends CI_Controller
     $data['bi2'] = $this->spk->getId(2);
     $data['bi3'] = $this->spk->getId(3);
     $data['bi4'] = $this->spk->getId(4);
+    $data['countaltinput'] = $this->spk->countAltInput();
+    $data['isalt'] = $this->spk->isAlternatif();
     $data['total'] = $this->spk->getTotal();
+    $data['countupload'] = $this->spk->countUpload();
+    $data['uploadbelumalt'] = $this->spk->uploadBelumAlt();
     $this->load->view('templates/header', $data);
-    $this->load->view('templates/sidebar', $data);
-    $this->load->view('templates/topbar', $data);
-    $this->load->view('spk/index', $data);
+    // $this->load->view('templates/sidebar', $data);
+    // $this->load->view('templates/topbar', $data);
+    $this->load->view('spk/vektorv', $data);
     $this->load->view('templates/footer', $data);
   }
 
@@ -46,16 +86,19 @@ class Spk extends CI_Controller
     $data['title'] = 'Alternatif';
     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
     $data['alternatif'] = $this->db->get('alternatif')->result_array();
+    $data['alternatifuser'] = $this->spk->alternatifUser();
     $this->load->view('templates/header', $data);
     $this->load->view('templates/sidebar', $data);
     $this->load->view('templates/topbar', $data);
     $this->load->view('spk/alternatif', $data);
     $this->load->view('templates/footer', $data);
   }
-  public function tambahALternatif()
+  public function tambahALternatif($id)
   {
     $data['title'] = 'Tambah Alternatif';
     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $data['userall'] = $this->spk->userAll();
+    $data['getusersupplier'] = $this->spk->getUserSupplier($id);
     $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required');
     $this->form_validation->set_rules('keterangan_alternatif', 'Keterangan Alternatif', 'required');
     if ($this->form_validation->run() == false) {
@@ -67,9 +110,15 @@ class Spk extends CI_Controller
     } else {
       $this->db->insert('alternatif', [
         'kode_alternatif' => $this->input->post('kode_alternatif'),
-        'keterangan_alternatif' => $this->input->post('keterangan_alternatif')
+        'keterangan_alternatif' => $this->input->post('keterangan_alternatif'),
+        'user_id' => $this->input->post('user_id')
       ]);
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Menambah Nilai Alternatif!</div>');
+
+      $this->db->set('is_alternatif', 1);
+      $this->db->where('id', $id);
+      $this->db->update('user');
+
+      $this->session->set_flashdata('flash', 'Ditambah');
       redirect('spk/alternatif');
     }
   }
@@ -77,6 +126,7 @@ class Spk extends CI_Controller
   {
     $data['title'] = 'Edit Alternatif';
     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $data['userall'] = $this->spk->userAll();
     $data['alternatifid'] = $this->spk->getAlternatifById($id);
     $this->form_validation->set_rules('kode_alternatif', 'Kode Alternatif', 'required');
     $this->form_validation->set_rules('keterangan_alternatif', 'Keterangan Alternatif', 'required');
@@ -88,14 +138,19 @@ class Spk extends CI_Controller
       $this->load->view('templates/footer', $data);
     } else {
       $this->spk->editAlternatif();
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Mengubah Nilai Alternatif!</div>');
+      $this->session->set_flashdata('flash', 'Diubah');
       redirect('spk/alternatif');
     }
   }
   public function hapusAlternatif($id)
   {
-    $this->db->delete('alternatif', ['id' => $id]);
-    $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Mengahpus Nilai Alternatif!</div>');
+    $this->db->delete('alternatif', ['user_id' => $id]);
+
+    $this->db->set('is_alternatif', 0);
+    $this->db->where('id', $id);
+    $this->db->update('user');
+
+    $this->session->set_flashdata('flash', 'Dihapus');
     redirect('spk/alternatif');
   }
 
@@ -127,7 +182,7 @@ class Spk extends CI_Controller
         'kode_bobot' => $this->input->post('kode_bobot'),
         'keterangan_bobot' => $this->input->post('keterangan_bobot')
       ]);
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Menambah Nilai Bobot!</div>');
+      $this->session->set_flashdata('flash', 'Ditambah');
       redirect('spk/bobot');
     }
   }
@@ -146,14 +201,17 @@ class Spk extends CI_Controller
       $this->load->view('templates/footer');
     } else {
       $this->spk->editBobot();
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Mengubah Nilai Bobot!</div>');
+      $this->session->set_flashdata('flash', 'Diubah');
       redirect('spk/bobot');
     }
   }
   public function hapusBobot($id)
   {
     $this->db->delete('bobot', ['id' => $id]);
-    $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Menghapus Nilai Bobot!</div>');
+
+    $this->db->delete('bobot_kriteria', ['bobot_id' => $id]);
+
+    $this->session->set_flashdata('flash', 'Dihapus');
     redirect('spk/bobot');
   }
 
@@ -185,7 +243,7 @@ class Spk extends CI_Controller
         'kode_kriteria' => $this->input->post('kode_kriteria'),
         'keterangan_kriteria' => $this->input->post('keterangan_kriteria')
       ]);
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Menambah Nilai Kriteria!</div>');
+      $this->session->set_flashdata('flash', 'Ditambah');
       redirect('spk/kriteria');
     }
   }
@@ -204,14 +262,14 @@ class Spk extends CI_Controller
       $this->load->view('templates/footer', $data);
     } else {
       $this->spk->editKriteria();
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Mengubah Nilai Kriteria!</div>');
+      $this->session->set_flashdata('flash', 'Diubah');
       redirect('spk/kriteria');
     }
   }
   public function hapusKriteria($id)
   {
     $this->db->delete('kriteria', ['id' => $id]);
-    $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Menghapus Nilai Kriteria!</div>');
+    $this->session->set_flashdata('flash', 'Dihapus');
     redirect('spk/kriteria');
   }
 
@@ -233,6 +291,11 @@ class Spk extends CI_Controller
     $data['user'] = $this->db->get_where('user', ['email', $this->session->userdata('email')])->row_array();
     $data['kriteria'] = $this->db->get('kriteria')->result_array();
     $data['bobot'] = $this->db->get('bobot')->result_array();
+    // $data['count'] = $this->spk->countBobotKriteria();
+    $count = $this->spk->countBobotKriteria();
+    foreach ($count as $row) {
+      $data['c'] = $row->urutan;
+    }
     $this->form_validation->set_rules('kriteria_id', 'Kriteria', 'required');
     $this->form_validation->set_rules('bobot_id', 'Bobot', 'required');
     if ($this->form_validation->run() == false) {
@@ -243,10 +306,11 @@ class Spk extends CI_Controller
       $this->load->view('templates/footer', $data);
     } else {
       $this->db->insert('bobot_kriteria', [
+        'urutan_id' => $this->input->post('urutan_id'),
         'kriteria_id' => $this->input->post('kriteria_id'),
         'bobot_id' => $this->input->post('bobot_id')
       ]);
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Menambah Nilai Bobot Kriteria!</div>');
+      $this->session->set_flashdata('flash', 'Ditambah');
       redirect('spk/bobotKriteria');
     }
   }
@@ -267,14 +331,14 @@ class Spk extends CI_Controller
       $this->load->view('templates/footer', $data);
     } else {
       $this->spk->editBobotKriteria();
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Mengubah Nilai Bobot Kriteria!</div>');
+      $this->session->set_flashdata('flash', 'Diubah');
       redirect('spk/bobotKriteria');
     }
   }
   public function hapusBobotKriteria($id)
   {
     $this->db->delete('bobot_kriteria', ['id' => $id]);
-    $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Menghapus Nilai Bobot Kriteria!</div>');
+    $this->session->set_flashdata('flash', 'Dihapus');
     redirect('spk/bobotKriteria');
   }
 
@@ -306,7 +370,7 @@ class Spk extends CI_Controller
         'penilaian' => $this->input->post('penilaian'),
         'keterangan' => $this->input->post('keterangan')
       ]);
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Menambah Penilaian Sub Kriteria!</div>');
+      $this->session->set_flashdata('flash', 'DItambah');
       redirect('spk/penilaianSubKriteria');
     }
   }
@@ -325,14 +389,14 @@ class Spk extends CI_Controller
       $this->load->view('templates/footer', $data);
     } else {
       $this->spk->editPenilaian();
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Mengubah Penilaian Sub Kriteria!</div>');
+      $this->session->set_flashdata('flash', 'Diubah');
       redirect('spk/penilaianSubKriteria');
     }
   }
   public function hapusPenilaianSubKriteria($id)
   {
     $this->db->delete('penilaian_sub_kriteria', ['id' => $id]);
-    $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Mengahpus Penilaian Sub Kriteria!</div>');
+    $this->session->set_flashdata('flash', 'Dihapus');
     redirect('spk/penilaianSUbKriteria');
   }
 
@@ -372,7 +436,7 @@ class Spk extends CI_Controller
         'c3' => $this->input->post('c3'),
         'c4' => $this->input->post('c4')
       ]);
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Menambah Penilaian ALternatif Kriteria!</div>');
+      $this->session->set_flashdata('flash', 'Ditambah');
       redirect('spk/inputNilai');
     }
   }
@@ -395,14 +459,57 @@ class Spk extends CI_Controller
       $this->load->view('templates/footer');
     } else {
       $this->spk->editInputNilai();
-      $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Mengubah Penilaian Sub Kriteria!</div>');
+      $this->session->set_flashdata('flash', 'Diubah');
       redirect('spk/inputNilai');
     }
   }
   public function hapusInputNilai($id)
   {
     $this->db->delete('input_nilai', ['id' => $id]);
-    $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">Berhasil Mengahpus Penilaian Alternatif Kriteria!</div>');
+    $this->session->set_flashdata('flash', 'Dihapus');
     redirect('spk/inputNilai');
+  }
+
+  public function supplierBaru()
+  {
+    $data['title'] = 'Daftar Supplier Baru';
+    $data['usersupplier'] = $this->spk->userAll();
+    $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('templates/topbar', $data);
+    $this->load->view('spk/supplierBaru', $data);
+    $this->load->view('templates/footer');
+  }
+  public function tambahSupplierBaru()
+  {
+    # code...
+  }
+  public function editSupplierBaru($id)
+  {
+    $data['title'] = 'Edit Supplier Baru';
+    $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $data['getuser'] = $this->spk->getUser($id);
+    $this->form_validation->set_rules('name', 'Nama', 'required');
+    if ($this->form_validation->run() == false) {
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/sidebar', $data);
+      $this->load->view('templates/topbar', $data);
+      $this->load->view('spk/editSupplierBaru', $data);
+      $this->load->view('templates/footer');
+    } else {
+      $this->spk->editSupplier();
+      $this->session->set_flashdata('flash', 'Ditambah');
+      redirect('spk/supplierBaru');
+    }
+  }
+  public function hapusSupplierBaru($id)
+  {
+    $this->db->delete('user', ['id' => $id]);
+
+    $this->db->delete('alternatif', ['user_id' => $id]);
+
+    $this->session->set_flashdata('flash', 'Dihapuss');
+    redirect('spk/supplierBaru');
   }
 }

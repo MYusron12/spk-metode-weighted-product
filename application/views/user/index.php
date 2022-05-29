@@ -17,11 +17,19 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title"><?= $user['name']; ?></h5>
-                    <p class="card-text"><?= $user['email']; ?></p>
-                    <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', $user['date_created']); ?></small></p>
+                    <h5 class="card-title">Nama : <?= $user['name']; ?></h5>
+                    <p class="card-text">Email : <?= $user['email']; ?></p>
+                    <p class="card-text">Aktif Sejak : <small class="text-muted">Member since <?= date('d F Y', $user['date_created']); ?></small></p>
                 </div>
             </div>
+            <br>
+            <h4>Hai supplier <?= $user['name']; ?>, </h4>
+            <?php if ($user['is_upload'] == 0) : ?>
+                <h4> silahkan upload berkas anda! </h4>
+                <h4><a href="<?= base_url('user/edit'); ?>">== klik untuk upload ==</a></h4>
+            <?php else : ?>
+                <h4>Anda Sudah Upload Data!</h4>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -29,4 +37,4 @@
 <!-- /.container-fluid -->
 
 </div>
-<!-- End of Main Content --> 
+<!-- End of Main Content -->

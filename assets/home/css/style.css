@@ -250,7 +250,7 @@ li > a:only-child:after { content: ''; }
 		border: none;
 		float: right;
 		background-color: #fff;
-		color: #6a67ce;
+		color: #7c69ef;
 	}
 	.menu .toggle {
 		float: none;
@@ -359,7 +359,7 @@ li > a:only-child:after { content: ''; }
 .login-icon a,.login-icon a:hover {
     border: 2px solid #fff;
     padding: 0.4em 1.7em;
-    color: #6a67ce;
+    color: #7c69ef;
     font-weight: 500;
     letter-spacing: 1px;
     display: block;
@@ -378,7 +378,7 @@ li > a:only-child:after { content: ''; }
 /*--/banner-info--*/
 
 .banner {
-    background: #6a67ce;
+    background: #7c69ef;
     position: relative;
     z-index: 1;
 }
@@ -483,8 +483,8 @@ li > a:only-child:after { content: ''; }
     border: none;
 }
 .login .btn {
-    border: 2px solid #6a67ce;
-    background: #6a67ce;
+    border: 2px solid #7c69ef;
+    background: #7c69ef;
     color: #fff;
     font-weight: 500;
     letter-spacing: 1px;
@@ -901,7 +901,7 @@ ul.links li a:hover,
 .contact_right button {
     outline: none;
     padding: 15px 0;
-    background: #6a67ce;
+    background: #7c69ef;
     color: #fff;
     font-weight: 500;
     letter-spacing: 2px;

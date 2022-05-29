@@ -19,6 +19,14 @@
             <?= form_error('keterangan_alternatif', '<small class="text-danger pl-3">', '</small>'); ?>
           </div>
         </div>
+        <div class="form-group row">
+          <label for="name" class="col-sm-2 col-form-label">Nama Supplier</label>
+          <div class="col-sm-6">
+            <input type="hidden" name="user_id" id="user_id" value="<?= $getusersupplier['id']; ?>">
+            <input type="text" class="form-control" id="" name="" value="<?= $getusersupplier['name']; ?>">
+            <?= form_error('user_id', '<small class="text-danger pl-3">', '</small>'); ?>
+          </div>
+        </div>
         <div class="form-group row justify-content-end">
           <div class="col-sm-10">
             <button type="submit" class="btn btn-primary">Simpan</button>
