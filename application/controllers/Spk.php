@@ -43,7 +43,7 @@ class Spk extends CI_Controller
     $data['countupload'] = $this->spk->countUpload();
     $data['uploadbelumalt'] = $this->spk->uploadBelumAlt();
     $this->load->view('templates/header', $data);
-    $this->load->view('templates/sidebar', $data);
+    // $this->load->view('templates/sidebar', $data);
     $this->load->view('templates/topbar', $data);
     $this->load->view('spk/index', $data);
     $this->load->view('templates/footer', $data);

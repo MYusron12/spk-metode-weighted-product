@@ -3,11 +3,11 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12 shadow">
       <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
       <!-- <a href="<?= base_url('spk/tambahAlternatif'); ?>" class="btn btn-primary mb-3">Tambah Alternatif</a> -->
-      <table class="table table-hover" id="dataTable">
-        <thead>
+      <table class="table table-hover table-bordered shadow" id="dataTable">
+        <thead class="table-primary">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Kode Alternatif</th>

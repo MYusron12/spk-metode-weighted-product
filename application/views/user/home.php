@@ -76,7 +76,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <a class="btn mr-2 text-capitalize" href="<?= base_url('auth/registration'); ?>">Daftar </a>
         </div>
         <div class="col-lg-6 col-md-8 mt-lg-0 mt-sm-5 mt-3 banner-image text-lg-center">
-          <img src="<?= base_url('assets/home/'); ?>images/bannerpng.png" alt="" class="img-fluid" />
+          <!-- <img src="<?= base_url('assets/home/'); ?>images/bannerpng.png" alt="" class="img-fluid" /> -->
+          <img src="<?= base_url('assets/img/'); ?>7.gif" alt="" class="img-fluid" />
         </div>
       </div>
     </div>

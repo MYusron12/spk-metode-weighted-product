@@ -49,9 +49,11 @@ class Auth extends CI_Controller
                     $this->session->set_userdata($data);
                     // jika admin, redirect dashboard
                     if ($user['role_id'] == 1) {
+                        $this->session->set_flashdata('flash', 'Berhasil Masuk');
                         redirect('spk');
                         // jika user biasa, redirect page prfile
                     } else {
+                        $this->session->set_flashdata('flash', 'Berhasil Masuk');
                         redirect('user');
                     }
                 } else {

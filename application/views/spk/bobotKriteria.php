@@ -4,11 +4,11 @@
   <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
   <?php foreach ($counttotal as $row) ?>
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-8 shadow">
       <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
-      <a href="<?= base_url('spk/tambahBobotKriteria'); ?>" class="btn btn-primary mb-3">Tambah Bobot Kriteria</a>
-      <table class="table table-hover" id="dataTable">
-        <thead>
+      <a href="<?= base_url('spk/tambahBobotKriteria'); ?>" class="shadow btn btn-primary mb-3 mt-3">Tambah Bobot Kriteria</a>
+      <table class="table table-hover table-bordered shadow" id="dataTable">
+        <thead class="table-primary">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Kode Kriteria</th>
@@ -47,7 +47,7 @@
     <div class="col-lg-4">
 
       <!-- Default Card Example -->
-      <div class="card mb-4">
+      <div class="card mb-4 shadow">
         <div class="card-header">Total Bobot
         </div>
         <div class="card-body">
@@ -56,7 +56,7 @@
       </div>
 
       <!-- Default Card Example -->
-      <div class="card mb-4">
+      <div class="card mb-4 shadow ">
         <div class="card-header">Total Hasil Normalisasi
         </div>
         <div class="card-body">

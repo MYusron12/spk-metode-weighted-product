@@ -4,10 +4,10 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
   <div class="row">
-    <div class="col-lg-6">
-      <a href="<?= base_url('spk/tambahBobot'); ?>" class="btn btn-primary mb-3">Tambah Bobot</a>
-      <table class="table table-hover" id="dataTable">
-        <thead>
+    <div class="col-lg-12 shadow">
+      <a href="<?= base_url('spk/tambahBobot'); ?>" class="btn btn-primary mb-3 mt-3 shadow">Tambah Bobot</a>
+      <table class="table table-hover table-bordered shadow" id="dataTable">
+        <thead class="table-primary">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Kode Bobot</th>

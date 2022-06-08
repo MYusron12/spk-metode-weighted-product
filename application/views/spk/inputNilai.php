@@ -4,18 +4,18 @@
   <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
   <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
   <div class="row">
-    <div class="col-lg-6">
-      <a href="<?= base_url('spk/tambahInputNilai'); ?>" class="btn btn-primary mb-3">Tambah Input Nilai ALternatif</a>
-      <table class="table table-hover" id="dataTable">
-        <thead>
+    <div class="col-lg-12 shadow">
+      <a href="<?= base_url('spk/tambahInputNilai'); ?>" class="btn btn-primary mt-3 shadow mb-3">Tambah Input Nilai ALternatif</a>
+      <table class="table table-hover table-bordered shadow" id="dataTable">
+        <thead class="table-primary">
           <tr>
-            <th scope="col">#</th>
-            <th>Kode ALternatif</th>
-            <th scope="col">Alternatif</th>
-            <th>C 1</th>
-            <th>C 2</th>
-            <th>C 3</th>
-            <th>C 4</th>
+            <th width="5%">#</th>
+            <th width="5%">Kode</th>
+            <th width="5%">Alternatif</th>
+            <th>C1 - Kualitas Produk</th>
+            <th>C2 - Kecepatan Kirim</th>
+            <th>C3 - Acceptable Price</th>
+            <th>C4 - Pembayaran Fleksible</th>
             <th>Action</th>
           </tr>
         </thead>

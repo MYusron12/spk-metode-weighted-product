@@ -1,5 +1,5 @@
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark  " id="">
+        <ul class="navbar-nav bg-light navbar-light text-gray sidebar sidebar-light " id="">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center " href="<?= base_url(); ?>">
                 <div class="sidebar-brand-icon rotate-n-15">

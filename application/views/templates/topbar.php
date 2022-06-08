@@ -12,10 +12,30 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
+                    <nav class="">
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown ">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                                        Quick menu
+                                    </a>
+                                    <div class="dropdown-menu shadow" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="<?= base_url('spk/bobot'); ?>">Bobot</a>
+                                        <a class="dropdown-item" href="<?= base_url('spk/kriteria'); ?>">Kriteria</a>
+                                        <a class="dropdown-item" href="<?= base_url('spk/bobotkriteria'); ?>">Bobot Kriteria</a>
+                                        <a class="dropdown-item" href="<?= base_url('spk/penilaiansubkriteria'); ?>">Penilaian Sub Kriteria</a>
+                                        <a class="dropdown-item" href="<?= base_url('spk/alternatif'); ?>">Alternatif</a>
+                                        <a class="dropdown-item" href="<?= base_url('spk/inputnilai'); ?>">Nilai Alternatif</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <div class="topbar-divider d-none d-sm-block"></div>
+
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -40,4 +60,4 @@
                     </ul>
 
                 </nav>
-                <!-- End of Topbar --> 
+                <!-- End of Topbar -->

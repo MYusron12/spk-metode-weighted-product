@@ -1,12 +1,11 @@
 <!-- Begin Page Content -->
 <div class="container-fluid mt-5">
+  <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
 
   <!-- Page Heading -->
-  <div class="row">
-    <div class="" data-aos="zoom-in" data-aos-duration="2000">
-      <div class="col-lg-6">
-        <h1> <span class="badge badge-primary shadow"><?= $title; ?></span></h1>
-      </div>
+  <div class="" data-aos="zoom-in" data-aos-duration="2000">
+    <div class="col-lg-12">
+      <p class="h1 text-center"> <span class="badge badge-primary shadow"><?= $title; ?></span></p>
     </div>
   </div>
 
@@ -145,77 +144,93 @@
   <!-- Content Row -->
 
   <div class="row">
-
-    <div class="col-xl-2" data-aos="fade-up" data-aos-duration="4000">
-      <img src="<?= base_url('assets/img/left-img.png'); ?>" class="img bg-none" width="200px" height="250px" alt="...">
+    <div class="col-xl-2 col-lg-2" data-aos="flip-down" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+      <img src="<?= base_url('assets/img/img5.png'); ?>" class="img bg-none" width="200px" height="250px" alt="...">
     </div>
-    <!-- Area Chart -->
-    <div class="col-xl-5 col-lg-6" data-aos="zoom-out-down" data-aos-duration="1000">
-      <div class="card  shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Bobot</h6>
+
+
+    <div class="col-4" data-aos="fade-down-right" data-aos-duration="2000">
+      <div class="card shadow">
+        <div class="row">
+          <div class="col-6">
+            <div class="col">
+              <div class="mr-2 mt-2 text-primary">Bobot</div>
+            </div>
+            <div class="card-body p-0">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <?php foreach ($bobot as $b) : ?>
+                      <span class="badge bg-warning"><?= $b['kode_bobot']; ?></span>
+                      <span class="text-center"><?= $b['keterangan_bobot']; ?></span>
+                      <br>
+                    <?php endforeach; ?>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-6">
+            <img src="<?= base_url('assets/img/5.gif'); ?>" class="img-fluid bg-none mt-1 mb-1 mr-2">
+          </div>
+          <!-- /.card-body -->
         </div>
-        <!-- Card Body -->
-        <div class="card-body shadow">
-          <table class="table " id="dataTable1">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Kode Bobot</th>
-                <th scope="col">Keterangan Bobot</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php $i = 1; ?>
-              <?php foreach ($bobot as $b) : ?>
-                <tr>
-                  <th scope="row"><?= $i; ?></th>
-                  <td><?= $b['kode_bobot']; ?></td>
-                  <td><?= $b['keterangan_bobot']; ?></td>
-                </tr>
-                <?php $i++; ?>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-        </div>
+        <!-- /.card -->
       </div>
     </div>
 
-    <!-- Pie Chart -->
-    <div class="col-xl-5 col-lg-6" data-aos="zoom-out-down" data-aos-duration="1000">
-      <div class="card  shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Kriteria</h6>
+
+    <div class="col-lg-4" data-aos="fade-down-left" data-aos-duration="2000">
+      <div class="card shadow">
+        <div class="row">
+          <div class="col-6">
+            <div class="col">
+              <div class="mr-2 mt-2 text-primary">Kriteria</div>
+            </div>
+            <div class="card-body p-0">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <?php foreach ($kriteria as $k) : ?>
+                      <i class="far fa-circle text-danger"></i>
+                      <span><?= $k['kode_kriteria']; ?></span> | <span><?= $k['keterangan_kriteria']; ?></span>
+                      <br>
+                    <?php endforeach; ?>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-6">
+            <img src="<?= base_url('assets/img/4.gif'); ?>" class="img-fluid bg-none mt-1 mb-1 mr-2">
+          </div>
         </div>
-        <!-- Card Body -->
-        <div class="card-body shadow">
-          <table class="table " id="dataTable">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Kode Kriteria</th>
-                <th scope="col">Keterangan Kriteria</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php $i = 1; ?>
-              <?php foreach ($kriteria as $kt) : ?>
-                <tr>
-                  <th scope="row"><?= $i; ?></th>
-                  <td><?= $kt['kode_kriteria']; ?></td>
-                  <td><?= $kt['keterangan_kriteria']; ?></td>
-                </tr>
-                <?php $i++; ?>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-        </div>
+        <!-- /.card-body -->
       </div>
     </div>
-
+    <div class="col-lg-2" data-aos="zoom-in-up" data-aos-duration="2000">
+      <div class="card shadow">
+        <div class="col">
+          <div class="mr-2 mt-2 text-primary">Penilaian Kriteria</div>
+        </div>
+        <div class="card-body p-0">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <?php foreach ($penilaian as $p) : ?>
+                  <i class="fas fa-arrow-circle-right text-danger"></i>
+                  <span><?= $p['penilaian']; ?></span> | <span><?= $p['keterangan']; ?></span>
+                  <br>
+                <?php endforeach; ?>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.card-body -->
+      </div>
+    </div>
   </div>
+
 
   <!-- Content Row -->
   <div class="row">
@@ -225,74 +240,54 @@
       <img src="<?= base_url('assets/img/img1.png'); ?>" class="img bg-none" width="200px" height="250px" alt="...">
     </div>
 
-    <div class="col-lg-6 mb-4" data-aos="zoom-out-up" data-aos-duration="1000">
+    <div class="col-lg-10 mb-4" data-aos="zoom-out-up" data-aos-duration="1000">
       <!-- Project Card Example -->
       <div class="card  shadow mb-4">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Bobot Kriteria</h6>
         </div>
         <div class="card-body shadow">
-          <table class="table table-responsive" id="dataTable2">
-            <thead>
-              <tr>
-                <?php foreach ($counttotal as $row) ?>
-                <th scope="col">#</th>
-                <th scope="col">Kode Kriteria</th>
-                <th scope="col">Keterangan Kriteria</th>
-                <th>Kode Bobot</th>
-                <th>Keterangan Bobot</th>
-                <th>Hasil Normalisasi</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php $i = 1; ?>
-              <?php foreach ($bobotkriteria as $bk) : ?>
-                <tr>
-                  <th scope="row"><?= $i; ?></th>
-                  <td><?= $bk['kode_kriteria']; ?></td>
-                  <td><?= $bk['keterangan_kriteria']; ?></td>
-                  <td><?= $bk['kode_bobot']; ?></td>
-                  <td><?= $bk['keterangan_bobot']; ?></td>
-                  <?php $hasil = $bk['kode_bobot'] / $row->total ?>
-                  <td><?= $hasil; ?></td>
-                </tr>
-                <?php $i++; ?>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
+          <div class="row">
+            <div class="col-6">
+              <table class="table table-responsive" id="dataTable2">
+                <thead>
+                  <tr>
+                    <?php foreach ($counttotal as $row) ?>
+                    <th scope="col">#</th>
+                    <th scope="col">Kode Kriteria</th>
+                    <th scope="col">Keterangan Kriteria</th>
+                    <th>Kode Bobot</th>
+                    <th>Keterangan Bobot</th>
+                    <th>Hasil Normalisasi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php $i = 1; ?>
+                  <?php foreach ($bobotkriteria as $bk) : ?>
+                    <tr>
+                      <th scope="row"><?= $i; ?></th>
+                      <td><?= $bk['kode_kriteria']; ?></td>
+                      <td><?= $bk['keterangan_kriteria']; ?></td>
+                      <td><?= $bk['kode_bobot']; ?></td>
+                      <td><?= $bk['keterangan_bobot']; ?></td>
+                      <?php $hasil = $bk['kode_bobot'] / $row->total ?>
+                      <td><?= $hasil; ?></td>
+                    </tr>
+                    <?php $i++; ?>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <img src="<?= base_url('assets/img/6.gif'); ?>" class="img-fluid bg-none mt-1 mb-1 mr-2">
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="col-lg-4 mb-4" data-aos="zoom-out-up" data-aos-duration="1000">
-      <!-- Illustrations -->
-      <div class="card  shadow mb-4">
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Penilaian Sub Kriteria</h6>
-        </div>
-        <div class="card-body shadow">
-          <table class="table" id="dataTable3">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Penilaian</th>
-                <th scope="col">Keterangan</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php $i = 1; ?>
-              <?php foreach ($penilaian as $p) : ?>
-                <tr>
-                  <th scope="row"><?= $i; ?></th>
-                  <td><?= $p['penilaian']; ?></td>
-                  <td><?= $p['keterangan']; ?></td>
-                </tr>
-                <?php $i++; ?>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-        </div>
-      </div>
+
     </div>
   </div>
 
@@ -392,6 +387,7 @@
           } else {
             $bi1 = 0;
           }
+          echo $bi1;
           ?>
 
           <?php foreach ($bi2 as $row) ?>
@@ -426,6 +422,7 @@
           }
           ?>
           <?php $hn1 = $bi1 / $total ?>
+          <?= $hn1; ?>
           <?php $hn2 = $bi2 / $total ?>
           <?php $hn3 = $bi3 / $total ?>
           <?php $hn4 = $bi4 / $total ?>

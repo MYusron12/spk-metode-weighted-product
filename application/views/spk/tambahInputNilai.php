@@ -20,28 +20,28 @@
         <div class="form-group row">
           <label for="name" class="col-sm-2 col-form-label">Kriteria C1</label>
           <div class="col-sm-6">
-            <input type="text" name="c1" id="c1" class="form-control">
+            <input type="number" name="c1" id="c1" class="form-control">
             <?= form_error('c1', '<small class="text-danger pl-3">', '</small>'); ?>
           </div>
         </div>
         <div class="form-group row">
           <label for="name" class="col-sm-2 col-form-label">Kriteria C2</label>
           <div class="col-sm-6">
-            <input type="text" name="c2" id="c2" class="form-control">
+            <input type="number" name="c2" id="c2" class="form-control">
             <?= form_error('c2', '<small class="text-danger pl-3">', '</small>'); ?>
           </div>
         </div>
         <div class="form-group row">
           <label for="name" class="col-sm-2 col-form-label">Kriteria C3</label>
           <div class="col-sm-6">
-            <input type="text" name="c3" id="c3" class="form-control">
+            <input type="number" name="c3" id="c3" class="form-control">
             <?= form_error('c3', '<small class="text-danger pl-3">', '</small>'); ?>
           </div>
         </div>
         <div class="form-group row">
           <label for="name" class="col-sm-2 col-form-label">Kriteria C4</label>
           <div class="col-sm-6">
-            <input type="text" name="c4" id="c4" class="form-control">
+            <input type="number" name="c4" id="c4" class="form-control">
             <?= form_error('c4', '<small class="text-danger pl-3">', '</small>'); ?>
           </div>
         </div>

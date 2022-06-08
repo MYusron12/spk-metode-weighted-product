@@ -3,11 +3,11 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-8 shadow">
       <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
       <!-- <a href="<?= base_url('spk/tambahBobot'); ?>" class="btn btn-primary mb-3">Tambah Bobot</a> -->
-      <table class="table table-hover" id="dataTable">
-        <thead>
+      <table class="table table-hover mt-3 table-bordered shadow" id="dataTable">
+        <thead class="table-primary">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nama Supplier</th>
@@ -58,7 +58,7 @@
       </table>
     </div>
     <div class="col-lg-4">
-      <div class="card" style="width: 18rem;">
+      <div class="card shadow" style="width: 18rem;">
         <div class="card-header">
           Keterangan Gambar Pada Tabel
         </div>

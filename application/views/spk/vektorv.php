@@ -12,13 +12,13 @@
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Vektor S</h6> -->
     <?php foreach ($bi1 as $row) ?>
-    <?php $bi1 = $row->bobot_id ?>
+    <?php $bi1 = $row->kode_bobot ?>
     <?php foreach ($bi2 as $row) ?>
-    <?php $bi2 = $row->bobot_id ?>
+    <?php $bi2 = $row->kode_bobot ?>
     <?php foreach ($bi3 as $row) ?>
-    <?php $bi3 = $row->bobot_id ?>
+    <?php $bi3 = $row->kode_bobot ?>
     <?php foreach ($bi4 as $row) ?>
-    <?php $bi4 = $row->bobot_id ?>
+    <?php $bi4 = $row->kode_bobot ?>
 
     <?php foreach ($total as $row) ?>
     <?php $total = $row->total ?>
