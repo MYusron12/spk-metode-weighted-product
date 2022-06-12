@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-lg-12 shadow">
       <a href="<?= base_url('spk/tambahInputNilai'); ?>" class="btn btn-primary mt-3 shadow mb-3">Tambah Input Nilai ALternatif</a>
-      <table class="table table-hover table-bordered shadow" id="dataTable">
+      <table class="table table-hover table-bordered shadow table-responsive" id="dataTable">
         <thead class="table-primary">
           <tr>
             <th width="5%">#</th>

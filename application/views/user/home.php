@@ -43,16 +43,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <!-- nav -->
       <nav class="d-lg-flex">
 
-        <label for="drop" class="toggle"><span class="fa fa-bars" aria-hidden="true"></span></label>
+        <!-- <label for="drop" class="toggle"><span class="fa fa-bars" aria-hidden="true"></span></label>
         <input type="checkbox" id="drop" />
         <ul class="menu mt-2 ml-auto">
           <li class=""><a href="index.html"></a></li>
           <li class=""><a href="#about"></a></li>
           <li class=""><a href="team.html"> </a></li>
           <li class=""><a href="contact.html"> </a></li>
-        </ul>
-        <div class="login-icon ml-lg-2">
-          <a class="user" href="<?= base_url('auth/'); ?>"> Login</a>
+        </ul> -->
+        <div class="login-icon">
+          <!-- <a class="user" href="<?= base_url('auth/'); ?>"> Login</a> -->
         </div>
       </nav>
       <div class="clear"></div>
@@ -63,17 +63,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
   <!-- banner -->
   <div class="banner" id="home">
-    <div class="container">
+    <div class="container justify-content-center">
       <div class="row banner-text">
         <div class="slider-info col-lg-6">
           <div class="banner-info-grid mt-lg-5">
             <h2>Menentukan</h2>
             <h2>Supplier Terbaik</h2>
             <br>
-            <h2>--------------</h2>
             <p>Metode Weighted Product | PT. Matahari Nusantara Logistik.</p>
           </div>
           <a class="btn mr-2 text-capitalize" href="<?= base_url('auth/registration'); ?>">Daftar </a>
+          <a class="btn btn-primary" href="<?= base_url('auth/'); ?>">Login </a>
         </div>
         <div class="col-lg-6 col-md-8 mt-lg-0 mt-sm-5 mt-3 banner-image text-lg-center">
           <!-- <img src="<?= base_url('assets/home/'); ?>images/bannerpng.png" alt="" class="img-fluid" /> -->

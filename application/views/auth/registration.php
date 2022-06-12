@@ -1,9 +1,6 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-lg-6">
-            <img src="<?= base_url('assets/img/img4.png'); ?>" class="img bg-none" alt="...">
-        </div>
         <div class="card o-hidden border-0 my-5 col-lg-6">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
@@ -37,15 +34,21 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="<?= base_url('auth/forgotpassword'); ?>">Forgot Password?</a>
+                                <!-- <a class="small" href="<?= base_url('auth/forgotpassword'); ?>">Forgot Password?</a> -->
                             </div>
                             <div class="text-center">
                                 <a class="small" href="<?= base_url('auth'); ?>">Already have an account? Login!</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="<?= base_url('auth/lupaPassword'); ?>">Lupa password</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-6">
+            <img src="<?= base_url('assets/img/img4.png'); ?>" class="img-fluid" alt="...">
         </div>
     </div>
 

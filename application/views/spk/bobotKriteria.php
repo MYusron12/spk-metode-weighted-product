@@ -7,7 +7,7 @@
     <div class="col-lg-8 shadow">
       <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
       <a href="<?= base_url('spk/tambahBobotKriteria'); ?>" class="shadow btn btn-primary mb-3 mt-3">Tambah Bobot Kriteria</a>
-      <table class="table table-hover table-bordered shadow" id="dataTable">
+      <table class="table table-hover table-bordered shadow table-responsive" id="dataTable">
         <thead class="table-primary">
           <tr>
             <th scope="col">#</th>

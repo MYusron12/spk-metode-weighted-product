@@ -34,7 +34,7 @@ INSERT INTO `bobot` (`id`, `kode_bobot`, `keterangan_bobot`) VALUES
 (16,	'2',	'Tidak Penting'),
 (17,	'3',	'Cukup Penting'),
 (18,	'4',	'Penting'),
-(22,	'5',	'Sangat Penting');
+(23,	'5',	'Sangat Penting');
 
 DROP TABLE IF EXISTS `bobot_kriteria`;
 CREATE TABLE `bobot_kriteria` (
@@ -46,10 +46,10 @@ CREATE TABLE `bobot_kriteria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `bobot_kriteria` (`id`, `urutan_id`, `kriteria_id`, `bobot_id`) VALUES
-(17,	1,	7,	22),
 (18,	2,	8,	17),
 (19,	3,	9,	18),
-(20,	4,	10,	16);
+(20,	4,	10,	16),
+(21,	1,	7,	23);
 
 DROP TABLE IF EXISTS `input_nilai`;
 CREATE TABLE `input_nilai` (
@@ -63,11 +63,12 @@ CREATE TABLE `input_nilai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `input_nilai` (`id`, `alternatif_id`, `c1`, `c2`, `c3`, `c4`) VALUES
-(24,	22,	'4',	'5',	'3',	'1'),
-(25,	29,	'1',	'3',	'2',	'4'),
-(26,	24,	'3',	'2',	'1',	'4'),
+(24,	22,	'4',	'5',	'3',	'3'),
+(25,	29,	'3',	'3',	'2',	'4'),
+(26,	24,	'3',	'2',	'3',	'4'),
 (27,	25,	'3',	'2',	'2',	'2'),
-(28,	30,	'1',	'2',	'3',	'4');
+(28,	30,	'3',	'2',	'3',	'4'),
+(29,	31,	'5',	'1',	'1',	'2');
 
 DROP TABLE IF EXISTS `kriteria`;
 CREATE TABLE `kriteria` (
@@ -115,7 +116,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`, `is_upload`, `is_input`, `is_alternatif`) VALUES
-(12,	'admin',	'admin@admin.com',	'default.jpg',	'$2y$10$VgiXi8BbKDSROpfXM1F9kexQTWKmPsYfJwdpbe0fZQ90gQ64dS.Hi',	1,	1,	1552285263,	1,	1,	0),
+(12,	'admin',	'admin@admin.com',	'default.jpg',	'$2y$10$oRiUQmJvB8jUqBi9TmKDZ.RhJPru7g2dqVpzkhZGjkOLgwnSVVCgO',	1,	1,	1552285263,	1,	1,	0),
 (27,	'PT A',	'pta@email.com',	'default.jpg',	'$2y$10$RoVUIuCadSYCt4sqsRlgqeSebzvUgfqlCbP24ubwCtlDhlpwQRHT.',	2,	1,	1653748742,	1,	0,	1),
 (28,	'PT B',	'ptb@email.com',	'default.jpg',	'$2y$10$PItZzBw6qORp0dsfl5bUhuQFFy91q4LX0ls.9N0nHjraJreQ4xdjq',	2,	1,	1653748796,	1,	0,	1),
 (29,	'PT C',	'ptc@email.com',	'default.jpg',	'$2y$10$3RaKXqjd11HyTMsSqb00He5fc4ipa5tIxm8Bd6PhBcC7ieSz8hZZi',	2,	1,	1653748813,	1,	0,	1),
@@ -201,4 +202,4 @@ CREATE TABLE `user_token` (
 INSERT INTO `user_token` (`id`, `email`, `token`, `date_created`) VALUES
 (9,	'test@test.com',	'D36gLx7Bw8A88FRLgoXJYovj7nOACk6sSwRt5QpgnZc=',	1649605400);
 
--- 2022-05-29 02:49:00
+-- 2022-06-12 13:34:54

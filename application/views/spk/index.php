@@ -1,44 +1,51 @@
 <!-- Begin Page Content -->
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-1">
   <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
 
   <!-- Page Heading -->
-  <div class="" data-aos="zoom-in" data-aos-duration="2000">
-    <div class="col-lg-12">
+  <!-- <div class="" data-aos="zoom-in" data-aos-duration="2000">
+    <div class="col-lg-4">
       <p class="h1 text-center"> <span class="badge badge-primary shadow"><?= $title; ?></span></p>
     </div>
-  </div>
+  </div> -->
 
   <div class=" row">
     <!-- Collapsable Card Example -->
-    <div class="card shadow mb-4" data-aos="zoom-in" data-aos-duration="2000">
-      <!-- Card Header - Accordion -->
-      <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-        <?php foreach ($countupload as $row) ?>
-        <?php $upload = $row->upload; ?>
-        <?php foreach ($isalt as $row) ?>
-        <?php $alt = $row->alt ?>
-        <?php foreach ($uploadbelumalt as $row) ?>
-        <?php $not = $row->uploadbelumalt ?>
-        <h6 class="m-0 font-weight-bold text-primary">Notifikasi
-          <i class="fas fa-bell fa-fw"></i>
-          <!-- Counter - Alerts -->
-          <span class="badge badge-danger badge-counter"><?= $upload; ?></span>
-          <i class="fas fa-comments fa-fw"></i>
-          <!-- Counter - Alerts -->
-          <span class="badge badge-danger badge-counter"><?= $alt; ?></span>
-          <i class="fas fa-pen fa-fw"></i>
-          <!-- Counter - Alerts -->
-          <span class="badge badge-danger badge-counter"><?= $not; ?></span>
-        </h6>
-      </a>
-      <!-- Card Content - Collapse -->
-      <div class="collapse" id="collapseCardExample">
-        <div class="card-body">
-          <i class="fas fa-bell fa-fw"></i>Terdapat <?= $upload; ?> supplier baru yang belum upload berkas, silahkan diarahkan agar upload berkas. <strong class="text-white"><a href="<?= base_url('spk/supplierBaru'); ?>">-> go to data supplier</a></strong><br>
-          <i class="fas fa-comments fa-fw"></i>Terdapat <?= $alt; ?> supplier yang belum menjadi alternatif. <strong class="text-white"><a href="<?= base_url('spk/supplierBaru'); ?>">-> go to data supplier</a></strong><br>
-          <i class="fas fa-pen fa-fw"></i>Terdapat <?= $not; ?> suplier yang sudah upload berkas dan belum menjadi alternatif. <strong class="text-white"><a href="<?= base_url('spk/supplierBaru'); ?>">-> go to data supplier</a></strong>
+    <div class="col-lg-6 col-sm-12">
+      <div class="card shadow mb-4" data-aos="zoom-in" data-aos-duration="2000">
+        <!-- Card Header - Accordion -->
+        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+          <?php foreach ($countupload as $row) ?>
+          <?php $upload = $row->upload; ?>
+          <?php foreach ($isalt as $row) ?>
+          <?php $alt = $row->alt ?>
+          <?php foreach ($uploadbelumalt as $row) ?>
+          <?php $not = $row->uploadbelumalt ?>
+          <h6 class="m-0 font-weight-bold text-primary">Notifikasi
+            <i class="fas fa-bell fa-fw"></i>
+            <!-- Counter - Alerts -->
+            <span class="badge badge-danger badge-counter"><?= $upload; ?></span>
+            <i class="fas fa-comments fa-fw"></i>
+            <!-- Counter - Alerts -->
+            <span class="badge badge-danger badge-counter"><?= $alt; ?></span>
+            <i class="fas fa-pen fa-fw"></i>
+            <!-- Counter - Alerts -->
+            <span class="badge badge-danger badge-counter"><?= $not; ?></span>
+          </h6>
+        </a>
+        <!-- Card Content - Collapse -->
+        <div class="collapse" id="collapseCardExample">
+          <div class="card-body">
+            <i class="fas fa-bell fa-fw"></i>Terdapat <?= $upload; ?> supplier baru yang belum upload berkas. <strong class="text-white"><a href="<?= base_url('spk/supplierBaru'); ?>">-> go to data supplier</a></strong><br>
+            <i class="fas fa-comments fa-fw"></i>Terdapat <?= $alt; ?> supplier yang belum menjadi alternatif. <strong class="text-white"><a href="<?= base_url('spk/supplierBaru'); ?>">-> go to data supplier</a></strong><br>
+            <i class="fas fa-pen fa-fw"></i>Terdapat <?= $not; ?> suplier sudah upload dan belum menjadi alternatif. <strong class="text-white"><a href="<?= base_url('spk/supplierBaru'); ?>">-> go to data supplier</a></strong>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="" data-aos="zoom-in" data-aos-duration="2000">
+      <div class="col-lg-6 col-sm-12">
+        <p class="h1 text-center"> <span class="badge badge-primary shadow"><?= $title; ?></span></p>
       </div>
     </div>
   </div>
@@ -51,11 +58,11 @@
     <!-- Area Chart -->
     <div class="col-xl-5 col-lg-6" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2000">
       <div class="card bg-dark text-white mb-3">
-        <img src="<?= base_url('assets/img/logistic.jpg'); ?>" class="card-img rounded shadow blur" alt="...">
+        <img src="<?= base_url('assets/img/8.gif'); ?>" class="card-img rounded shadow blur" height="230" alt="...">
         <div class="card-img-overlay">
           <?php $hariIni = new DateTime(); ?>
           <h5 class="card-title"><?= $hariIni->format('l F Y, H:i'); ?></h5>
-          <p class="card-text">Thank you for using the weighted product method decision support system application to determine the best supplier at PT. Matahari Nusantara Logistik, hopefully it can help your work!.</p>
+          <p class="card-text">Thank you for using the weighted product method decision support system application to determine the best supplier, hopefully it can help your work!.</p>
         </div>
       </div>
     </div>
@@ -65,35 +72,23 @@
       <div class="row">
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-6 col-md-6 mb-4">
-          <div class="card border-left-primary bg-warning text-white shadow h-100 py-2" data-aos="zoom-in-up" data-aos-duration="2000">
-            <div class="card-body shadow">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Bobot</div>
-                  <?php foreach ($countbobot as $row) ?>
-                  <div class="h5 mb-0 font-weight-bold text-white-800"><?= $row->bobot; ?></div>
-                </div>
-                <div class="col-auto">
-                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                </div>
-              </div>
+          <div class="card bg-dark text-white shadow" data-aos="zoom-in-up" data-aos-duration="2000">
+            <img src="<?= base_url('assets/img/9.gif'); ?>" class="card-img shadow" height="100" alt="...">
+            <div class="card-img-overlay">
+              <h5 class="card-title">Jumlah Bobot</h5>
+              <?php foreach ($countbobot as $row) ?>
+              <p class="card-text"><?= $row->bobot; ?></p>
             </div>
           </div>
         </div>
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-6 col-md-6 mb-4">
-          <div class="card border-left-success bg-primary shadow h-100 py-2" data-aos="zoom-in-down" data-aos-duration="2000">
-            <div class="card-body shadow">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Kriteria</div>
-                  <?php foreach ($countkriteria as $row) ?>
-                  <div class="h5 mb-0 font-weight-bold text-white"><?= $row->kriteria; ?></div>
-                </div>
-                <div class="col-auto">
-                  <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                </div>
-              </div>
+          <div class="card bg-dark text-white shadow" data-aos="zoom-in-down" data-aos-duration="2000">
+            <img src="<?= base_url('assets/img/10.jpg'); ?>" class="card-img shadow" height="100" alt="...">
+            <div class="card-img-overlay">
+              <h5 class="card-title">Jumlah Kriteria</h5>
+              <?php foreach ($countkriteria as $row) ?>
+              <p class="card-text"><?= $row->kriteria; ?></p>
             </div>
           </div>
         </div>
@@ -101,39 +96,23 @@
       <div class="row">
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-6 col-md-6 mb-4">
-          <div class="card bg-danger border-left-info shadow h-100 py-2" data-aos="zoom-in-left" data-aos-duration="2000">
-            <div class="card-body shadow">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total Bobot Kriteria</div>
-                  <div class="row no-gutters align-items-center">
-                    <div class="col-auto">
-                      <?php foreach ($counttotal as $row) ?>
-                      <div class="h5 mb-0 mr-3 font-weight-bold text-white"><?= $row->total; ?></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-auto">
-                  <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                </div>
-              </div>
+          <div class="card bg-dark text-white shadow" data-aos="zoom-in-left" data-aos-duration="2000">
+            <img src="<?= base_url('assets/img/11.gif'); ?>" class="card-img shadow" height="100" alt="...">
+            <div class="card-img-overlay">
+              <h5 class="card-title">Bobot Kriteria Total</h5>
+              <?php foreach ($counttotal as $row) ?>
+              <p class="card-text"><?= $row->total; ?></p>
             </div>
           </div>
         </div>
         <!-- Pending Requests Card Example -->
         <div class="col-xl-6 col-md-6 mb-4">
-          <div class="card bg-success border-left-warning shadow h-100 py-2" data-aos="zoom-in-right" data-aos-duration="2000">
-            <div class="card-body shadow">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Jumlah Alternatif</div>
-                  <?php foreach ($countalt as $row) ?>
-                  <div class="h5 mb-0 font-weight-bold text-white"><?= $row->alternatif; ?></div>
-                </div>
-                <div class="col-auto">
-                  <i class="fas fa-comments fa-2x text-gray-300"></i>
-                </div>
-              </div>
+          <div class="card bg-dark text-white shadow" data-aos="zoom-in-right" data-aos-duration="2000">
+            <img src="<?= base_url('assets/img/12.gif'); ?>" class="card-img shadow" height="100" alt="...">
+            <div class="card-img-overlay">
+              <h5 class="card-title">Jumlah Alternatif</h5>
+              <?php foreach ($countalt as $row) ?>
+              <p class="card-text"><?= $row->alternatif; ?></p>
             </div>
           </div>
         </div>
@@ -144,15 +123,15 @@
   <!-- Content Row -->
 
   <div class="row">
-    <div class="col-xl-2 col-lg-2" data-aos="flip-down" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+    <div class="col-xl-2 col-lg-2 col-sm-12" data-aos="flip-down" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
       <img src="<?= base_url('assets/img/img5.png'); ?>" class="img bg-none" width="200px" height="250px" alt="...">
     </div>
 
 
-    <div class="col-4" data-aos="fade-down-right" data-aos-duration="2000">
+    <div class="col-lg-4 col-sm-12 mt-2" data-aos="fade-down-right" data-aos-duration="2000">
       <div class="card shadow">
         <div class="row">
-          <div class="col-6">
+          <div class="col-lg-6 col-sm-12">
             <div class="col">
               <div class="mr-2 mt-2 text-primary">Bobot</div>
             </div>
@@ -170,7 +149,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-lg-6 col-sm-12">
             <img src="<?= base_url('assets/img/5.gif'); ?>" class="img-fluid bg-none mt-1 mb-1 mr-2">
           </div>
           <!-- /.card-body -->
@@ -180,10 +159,10 @@
     </div>
 
 
-    <div class="col-lg-4" data-aos="fade-down-left" data-aos-duration="2000">
+    <div class="col-lg-4 mt-2" data-aos="fade-down-left" data-aos-duration="2000">
       <div class="card shadow">
         <div class="row">
-          <div class="col-6">
+          <div class="col-lg-6 col-sm-12">
             <div class="col">
               <div class="mr-2 mt-2 text-primary">Kriteria</div>
             </div>
@@ -201,14 +180,14 @@
               </ul>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-lg-6 col-sm-12">
             <img src="<?= base_url('assets/img/4.gif'); ?>" class="img-fluid bg-none mt-1 mb-1 mr-2">
           </div>
         </div>
         <!-- /.card-body -->
       </div>
     </div>
-    <div class="col-lg-2" data-aos="zoom-in-up" data-aos-duration="2000">
+    <div class="col-lg-2 mt-2" data-aos="zoom-in-up" data-aos-duration="2000">
       <div class="card shadow">
         <div class="col">
           <div class="mr-2 mt-2 text-primary">Penilaian Kriteria</div>
@@ -248,7 +227,7 @@
         </div>
         <div class="card-body shadow">
           <div class="row">
-            <div class="col-6">
+            <div class="col-lg-6 col-sm12">
               <table class="table table-responsive" id="dataTable2">
                 <thead>
                   <tr>
@@ -278,7 +257,7 @@
                 </tbody>
               </table>
             </div>
-            <div class="col-6">
+            <div class="col-lg-6 col-sm-12">
               <img src="<?= base_url('assets/img/6.gif'); ?>" class="img-fluid bg-none mt-1 mb-1 mr-2">
             </div>
           </div>

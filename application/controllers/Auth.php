@@ -7,6 +7,7 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->model('auth_model', 'auth');
     }
 
     public function index()
@@ -304,5 +305,41 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password has been changed! Please login.</div>');
             redirect('auth');
         }
+    }
+
+    public function lupaPassword()
+    {
+        $data['title'] = 'Form Lupa Password';
+
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->load->view('templates/auth_header', $data);
+        $this->load->view('auth/lupapassword');
+        $this->load->view('templates/auth_footer');
+    }
+
+    public function getLupaPassword()
+    {
+        $data['title'] = 'Ubah Password';
+        $email = $this->input->post('email');
+        $data['dataemail'] = $this->auth->getRowEmail($email);
+        // var_dump($data);
+        // die;
+
+        $this->load->view('templates/auth_header', $data);
+        $this->load->view('auth/ubahpassword', $data);
+        $this->load->view('templates/auth_footer');
+    }
+
+    public function ubahPassword($id)
+    {
+        $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+        $this->db->set('password', $password);
+        $this->db->where('id', $id);
+        $this->db->update('user');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password has been changed! Please login.</div>');
+        redirect('auth');
     }
 }
