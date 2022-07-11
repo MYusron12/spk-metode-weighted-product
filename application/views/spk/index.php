@@ -56,7 +56,7 @@
       <img src="<?= base_url('assets/img/img4.png'); ?>" class="img bg-none" width="200px" height="250px" alt="...">
     </div>
     <!-- Area Chart -->
-    <div class="col-xl-5 col-lg-6" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2000">
+    <div class="col-xl-6 col-lg-6" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2000">
       <div class="card bg-dark text-white mb-3">
         <img src="<?= base_url('assets/img/8.gif'); ?>" class="card-img rounded shadow blur" height="230" alt="...">
         <div class="card-img-overlay">
@@ -68,7 +68,7 @@
     </div>
 
     <!-- Pie Chart -->
-    <div class="col-xl-5 col-lg-6">
+    <div class="col-xl-4 col-lg-4">
       <div class="row">
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-6 col-md-6 mb-4">

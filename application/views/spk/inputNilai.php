@@ -4,7 +4,7 @@
   <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
   <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
   <div class="row">
-    <div class="col-lg-12 shadow">
+    <div class="col-lg-12">
       <a href="<?= base_url('spk/tambahInputNilai'); ?>" class="btn btn-primary mt-3 shadow mb-3">Tambah Input Nilai ALternatif</a>
       <table class="table table-hover table-bordered shadow table-responsive" id="dataTable">
         <thead class="table-primary">
